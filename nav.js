@@ -53,4 +53,23 @@
   window.addEventListener("scroll", function () { if (h.classList.contains("open")) fit(); }, { passive: true });
   (mq.addEventListener ? mq.addEventListener("change", function () { set(false); fit(); })
                        : mq.addListener(function () { set(false); fit(); }));
+
+  /* Scroll To Top Functionality */
+  var stBtn = document.getElementById("scrollTop");
+  if (stBtn) {
+    window.addEventListener("scroll", function () {
+      if (window.pageYOffset > 250) {
+        stBtn.classList.add("visible");
+      } else {
+        stBtn.classList.remove("visible");
+      }
+    }, { passive: true });
+
+    stBtn.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
 })();
